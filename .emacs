@@ -15,11 +15,21 @@
 (fontify-frame nil)
 (push 'fontify-frame after-make-frame-functions)
 
+
+(add-to-list 'load-path "~/.emacs.d/maxframe")
+(require 'maxframe)
+(add-hook 'window-setup-hook 'maximize-frame t)
+
+
 (global-set-key (kbd "s-SPC") 'set-mark-command)
 (global-set-key (kbd "<backspace>") 'delete-backward-char)
 (global-set-key (kbd "<kp-delete>") 'delete-char)
 (delete-selection-mode t)
 (setq make-backup-files nil)
+
+;; Stop ruby-mode from automatically adding coding: utf-8 lines to
+;; source files with non-ascii characters
+(setq ruby-insert-encoding-magic-comment nil)
 
 (custom-set-variables
   ;; custom-set-variables was added by Custom.
