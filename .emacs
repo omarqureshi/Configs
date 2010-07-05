@@ -27,6 +27,23 @@
 (delete-selection-mode t)
 (setq make-backup-files nil)
 
+(add-hook 'isearch-mode-hook
+	  (lambda ()
+	    (define-key isearch-mode-map (kbd "<backspace>") 'isearch-del-char)
+	    )
+	  )
+
+(add-to-list 'load-path "~/.emacs.d/vendor/textmate.el")
+(require 'textmate)
+(textmate-mode)
+(add-to-list 'load-path "~/.emacs.d/vendor/")
+(require 'peepopen)
+(add-to-list 'load-path "~/.emacs.d/yasnippet")
+(require 'yasnippet) ;; not yasnippet-bundle
+(yas/initialize)
+(yas/load-directory "~/.emacs.d/yasnippet/snippets")
+
+
 ;; Stop ruby-mode from automatically adding coding: utf-8 lines to
 ;; source files with non-ascii characters
 (setq ruby-insert-encoding-magic-comment nil)
