@@ -36,12 +36,10 @@
 (add-to-list 'load-path "~/.emacs.d/vendor/textmate.el")
 (require 'textmate)
 (textmate-mode)
-(add-to-list 'load-path "~/.emacs.d/vendor/")
-(require 'peepopen)
-(add-to-list 'load-path "~/.emacs.d/yasnippet")
-(require 'yasnippet) ;; not yasnippet-bundle
-(yas/initialize)
-(yas/load-directory "~/.emacs.d/yasnippet/snippets")
+;;(add-to-list 'load-path "~/.emacs.d/yasnippet")
+;;(require 'yasnippet) ;; not yasnippet-bundle
+;;(yas/initialize)
+;;(yas/load-directory "~/.emacs.d/yasnippet/snippets")
 
 
 ;; Stop ruby-mode from automatically adding coding: utf-8 lines to
@@ -61,3 +59,14 @@
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
  )
+
+
+(defun autocompile nil
+  "compile itself if ~/.emacs"
+  (interactive)
+  (require 'bytecomp)
+  (if (string= (buffer-file-name) (expand-file-name (concat
+default-directory ".emacs")))
+      (byte-compile-file (buffer-file-name))))
+
+(add-hook 'after-save-hook 'autocompile)
