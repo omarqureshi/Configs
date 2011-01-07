@@ -1,3 +1,26 @@
+(add-to-list 'load-path "~/.emacs.d/vendor/textmate.el")
+(require 'textmate)
+(add-to-list 'load-path "~/.emacs.d/vendor/")
+(require 'peepopen)
+(textmate-mode)
+(add-to-list 'load-path "~/.emacs.d/vendor/spiffy-elisp")
+(require 'spiffy-textmate-mode)
+(spiffy-textmate-mode t)
+(add-to-list 'load-path "~/.emacs.d/vendor/markdown-mode")
+(autoload 'markdown-mode "markdown-mode.el"
+   "Major mode for editing Markdown files" t)
+(require 'textile-mode)
+(add-to-list 'auto-mode-alist '("\\.textile\\'" . textile-mode))
+(add-to-list 'load-path "~/.emacs.d/ruby-mode")
+(require 'ruby-mode)
+
+(require 'pretty-mode)
+(global-pretty-mode 1)
+
+
+(setq ns-pop-up-frames nil)
+
+
 (fset 'insertPound
    "#")
 (global-set-key (kbd "M-3") 'insertPound)
@@ -20,7 +43,6 @@
 (require 'maxframe)
 (add-hook 'window-setup-hook 'maximize-frame t)
 
-
 (global-set-key (kbd "s-SPC") 'set-mark-command)
 (global-set-key (kbd "<backspace>") 'delete-backward-char)
 (global-set-key (kbd "<kp-delete>") 'delete-char)
@@ -32,15 +54,6 @@
 	    (define-key isearch-mode-map (kbd "<backspace>") 'isearch-del-char)
 	    )
 	  )
-
-(add-to-list 'load-path "~/.emacs.d/vendor/textmate.el")
-(require 'textmate)
-(textmate-mode)
-;;(add-to-list 'load-path "~/.emacs.d/yasnippet")
-;;(require 'yasnippet) ;; not yasnippet-bundle
-;;(yas/initialize)
-;;(yas/load-directory "~/.emacs.d/yasnippet/snippets")
-
 
 ;; Stop ruby-mode from automatically adding coding: utf-8 lines to
 ;; source files with non-ascii characters
