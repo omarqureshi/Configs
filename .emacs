@@ -20,6 +20,15 @@
 
 (setq ns-pop-up-frames nil)
 
+ ;;; nxml (HTML ERB template support)
+(load "~/.emacs.d/nxhtml/autostart.el")
+
+(setq
+ mumamo-chunk-coloring 'submode-colored
+ nxhtml-skip-welcome t
+ rng-nxml-auto-validate-flag nil
+ nxml-degraded t)
+(add-to-list 'auto-mode-alist '("\\.html\\.erb$" . eruby-nxhtml-mumamo-mode)) 
 
 (fset 'insertPound
    "#")
