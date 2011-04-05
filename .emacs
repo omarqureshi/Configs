@@ -16,7 +16,7 @@
 
 (require 'pretty-mode)
 (global-pretty-mode 1)
-
+(global-linum-mode)
 
 (setq ns-pop-up-frames nil)
 
@@ -36,14 +36,15 @@
 
 (add-to-list 'load-path "~/.emacs.d/color-theme")
 (require 'color-theme)
+(load "~/.emacs.d/color-theme/themes/solarized")
 (eval-after-load "color-theme"
   '(progn
      (color-theme-initialize)
-     (color-theme-hober)))
+     (color-theme-solarized-dark)))
 
 
 (defun fontify-frame (frame)
-(set-frame-parameter frame 'font "-apple-Pragmata-medium-normal-normal-*-14-*-*-*-p-0-iso10646-1"))
+(set-frame-parameter frame 'font "-apple-Pragmata-medium-normal-normal-*-18-*-*-*-p-0-iso10646-1"))
 (fontify-frame nil)
 (push 'fontify-frame after-make-frame-functions)
 
