@@ -56,6 +56,7 @@
 (global-set-key (kbd "s-SPC") 'set-mark-command)
 (global-set-key (kbd "<backspace>") 'delete-backward-char)
 (global-set-key (kbd "<kp-delete>") 'delete-char)
+(global-set-key (kbd "s-`") 'other-window)
 (delete-selection-mode t)
 (setq make-backup-files nil)
 
